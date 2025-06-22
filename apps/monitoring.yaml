@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR_USERNAME/monitoring-gitops
+    repoURL: https://github.com/Oshtuk/monitoring-gitops
     targetRevision: HEAD
     path: charts
   destination:
