@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: rails
-          image: YOUR_DOCKER_IMAGE_HERE
+          image: maxkerim/rails-app:latest
           ports:
             - containerPort: 3000
