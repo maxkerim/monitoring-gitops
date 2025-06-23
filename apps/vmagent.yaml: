@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vmagent
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://victoriametrics.github.io/helm-charts/
+    chart: vmagent
+    targetRevision: 0.9.28
+    helm:
+      values: |
+        extraArgs:
+          - -promscrape.config=/config/prometheus.yaml
+        config:
+          "prometheus.yaml": |
+            global:
+              scrape_interval: 15s
+            scrape_configs:
+              - job_name: 'rails-app'
+                static_configs:
+                  - targets: ['rails.monitoring.svc.cluster.local:3000']
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
