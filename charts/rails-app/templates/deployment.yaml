@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rails
+  labels:
+    app: rails
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rails
+  template:
+    metadata:
+      labels:
+        app: rails
+    spec:
+      containers:
+        - name: rails
+          image: YOUR_DOCKER_IMAGE_HERE
+          ports:
+            - containerPort: 3000
