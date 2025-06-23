@@ -1,3 +1,12 @@
 vmagent:
   remoteWrite:
-    - url: http://victoriametrics:8428/api/v1/write
+    - url: http://victoriametrics-victoria-metrics-single-server.monitoring.svc.cluster.local:8428/api/v1/write
+
+  scrapeInterval: 15s
+
+  scrape_configs:
+    - job_name: 'rails-app'
+      static_configs:
+        - targets:
+            - 'rails-app.<rails-namespace>.svc.cluster.local:3000'
+

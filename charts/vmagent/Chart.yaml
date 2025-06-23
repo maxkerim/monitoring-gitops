@@ -1,6 +1,7 @@
 apiVersion: v2
 name: vmagent
-description: Helm chart for vmagent
+description: Helm chart for VictoriaMetrics Agent (vmagent)
 type: application
 version: 1.0.0
 appVersion: "1.93.0"
+
