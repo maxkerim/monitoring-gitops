@@ -4,16 +4,13 @@ metadata:
   name: rails-app
   namespace: argocd
 spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: https://github.com/Oshtuk/monitoring-gitops
+    path: charts/rails-app      # Путь к чарту
+    repoURL: https://github.com/Oshtuk/monitoring-gitops.git
     targetRevision: HEAD
-    path: charts/rails-app
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: monitoring
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-
+    automated: {}

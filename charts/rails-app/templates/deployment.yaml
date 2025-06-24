@@ -1,21 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rails
-  labels:
-    app: rails
+  name: rails-app
+  namespace: monitoring
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: rails
+      app: rails-app
   template:
     metadata:
       labels:
-        app: rails
+        app: rails-app
     spec:
       containers:
-        - name: rails
-          image: maxkerim/rails-app:latest
-          ports:
-            - containerPort: 3000
+      - name: rails
+        image: ghcr.io/bitnami/rails:6.1.4
+        ports:
+        - containerPort: 3000
+        env:
+        - name: RAILS_ENV
+          value: "production"
+        - name: RAILS_LOG_TO_STDOUT
+          value: "true"
+        command: ["/bin/bash", "-c"]
+        args:
+        - |
+          rails server -b 0.0.0.0 -p 3000

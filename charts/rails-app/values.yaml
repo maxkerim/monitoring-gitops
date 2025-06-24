@@ -1,10 +1,11 @@
-replicaCount: 1
-
 image:
-  repository: your-dockerhub-username/rails-app
+  repository: maxkerim/rails-app
   tag: latest
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
   port: 3000
+
+replicaCount: 1
+
