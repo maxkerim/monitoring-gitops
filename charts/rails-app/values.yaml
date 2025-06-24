@@ -1,5 +1,5 @@
 image:
-  repository: maxkerim/rails-app
+  repository: bitnami/rails
   tag: latest
   pullPolicy: IfNotPresent
 
