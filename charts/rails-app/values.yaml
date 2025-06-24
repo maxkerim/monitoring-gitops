@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: rails
-  tag: onbuild
+  repository: renderexamples/rails
+  tag: latest
   pullPolicy: IfNotPresent
 
 
