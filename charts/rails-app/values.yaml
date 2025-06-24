@@ -1,9 +1,10 @@
 replicaCount: 1
 
 image:
-  repository: rails:onbuild
-  tag: latest
+  repository: rails
+  tag: onbuild
   pullPolicy: IfNotPresent
+
 
 service:
   type: ClusterIP
