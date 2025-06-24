@@ -2,9 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rails-app
-  namespace: monitoring
+  labels:
+    app: rails-app
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: rails-app
@@ -14,16 +15,9 @@ spec:
         app: rails-app
     spec:
       containers:
-      - name: rails
-        image: ghcr.io/bitnami/rails:6.1.4
-        ports:
-        - containerPort: 3000
-        env:
-        - name: RAILS_ENV
-          value: "production"
-        - name: RAILS_LOG_TO_STDOUT
-          value: "true"
-        command: ["/bin/bash", "-c"]
-        args:
-        - |
-          rails server -b 0.0.0.0 -p 3000
+        - name: rails
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 3000
+

@@ -1,11 +1,11 @@
+replicaCount: 1
+
 image:
-  repository: bitnami/rails
+  repository: rails:onbuild
   tag: latest
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
   port: 3000
-
-replicaCount: 1
 
