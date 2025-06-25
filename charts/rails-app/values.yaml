@@ -1,10 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: renderexamples/rails
+  repository: maxkerim/rails-app
   tag: latest
-  pullPolicy: IfNotPresent
-
+  pullPolicy: Never
 
 service:
   type: ClusterIP
