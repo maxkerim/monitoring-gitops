@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-username/monitoring-gitops
+    repoURL: https://github.com/Oshtuk/monitoring-gitops
     targetRevision: HEAD
     path: apps/rails-app
   destination:
@@ -14,4 +14,6 @@ spec:
     namespace: monitoring
   syncPolicy:
     automated:
+      prune: true
       selfHeal: true
+
