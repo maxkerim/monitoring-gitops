@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: maxkerim/rails-app
+  repository: ghcr.io/railwayapp/hello-rails
   tag: latest
-  pullPolicy: Never
+  pullPolicy: Always
 
 service:
   type: ClusterIP

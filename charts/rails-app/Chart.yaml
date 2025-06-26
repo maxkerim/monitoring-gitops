@@ -1,5 +1,7 @@
 apiVersion: v2
 name: rails-app
-description: A simple Helm chart for Rails app
+description: A Helm chart for deploying Rails app
+type: application
 version: 0.1.0
-appVersion: "6.1"
+appVersion: "1.0"
+
