@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: charts/rails-app      # Путь к чарту
-    repoURL: https://github.com/Oshtuk/monitoring-gitops.git
+    repoURL: https://github.com/Oshtuk/monitoring-gitops
     targetRevision: HEAD
   syncPolicy:
     automated: {}
