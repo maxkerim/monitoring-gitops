@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Oshtuk/monitoring-gitops
-    targetRevision: HEAD
+    targetRevision: main
     path: apps/rails-app
   destination:
     server: https://kubernetes.default.svc
