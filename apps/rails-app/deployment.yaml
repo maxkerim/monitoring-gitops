@@ -15,20 +15,19 @@ spec:
         app: rails-app
     spec:
       containers:
-      - name: rails
-        image: maxkerim/rails-app:latest
-        ports:
-        - containerPort: 3000
-        env:
-        - name: RAILS_ENV
-          value: "production"
-        readinessProbe:
-          httpGet:
-            scheme: HTTP
-            path: /
-            port: 3000
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          timeoutSeconds: 5
-          successThreshold: 1
-          failureThreshold: 5
+        - name: rails
+          image: maxkerim/rails-app:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: RAILS_ENV
+              value: production
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
+

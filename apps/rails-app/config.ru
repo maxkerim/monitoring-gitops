@@ -1,6 +1,10 @@
-# This file is used by Rack-based servers to start the application.
-
 require_relative "config/environment"
 
-run Rails.application
-Rails.application.load_server
+run Rack::Builder.new {
+  map "/health" do
+    run proc { [200, { "Content-Type" => "text/plain" }, ["OK"]] }
+  end
+
+  run Rails.application
+}
+
