@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: maxkerim/rails-ap
+  repository: maxkerim/rails-app
   tag: latest
   pullPolicy: Always
 
