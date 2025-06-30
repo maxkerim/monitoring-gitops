@@ -5,8 +5,5 @@ metadata:
   namespace: monitoring
 data:
   prometheus.yml: |
-    global:
-      scrape_interval: {{ .Values.scrapeInterval }}
-    scrape_configs:
-{{ toYaml .Values.scrape_configs | indent 6 }}
+{{ toYaml .Values.prometheusScrapeConfig | indent 4 }}
 

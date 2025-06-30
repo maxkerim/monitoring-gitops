@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: vmagent
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app.kubernetes.io/name: vmagent
@@ -17,14 +17,17 @@ spec:
     spec:
       containers:
         - name: vmagent
-          image: victoriametrics/vmagent:v1.93.0
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            - "-remoteWrite.url={{ .Values.remoteWrite.url }}"
+{{- range .Values.remoteWrite }}
+            - "-remoteWrite.url={{ .url }}"
+{{- end }}
             - "-promscrape.config=/etc/prometheus/prometheus.yml"
-            - "-httpListenAddr=:8428"
+            - "-httpListenAddr=:{{ .Values.service.port }}"
           ports:
             - name: http
-              containerPort: 8428
+              containerPort: {{ .Values.service.port }}
           volumeMounts:
             - name: config
               mountPath: /etc/prometheus
