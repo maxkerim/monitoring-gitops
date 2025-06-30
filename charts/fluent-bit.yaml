@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluent-bit
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/fluent/helm-charts
+    chart: fluent-bit
+    targetRevision: 0.22.0
+    helm:
+      values: |
+        backend:
+          type: forward
+          forward:
+            host: victorialogs.monitoring.svc.cluster.local
+            port: 24224
+        service:
+          type: ClusterIP
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
