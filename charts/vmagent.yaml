@@ -6,21 +6,24 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://victoriametrics.github.io/helm-charts/
-    chart: vmagent
-    targetRevision: 0.9.28
+    repoURL: https://github.com/Oshtuk/monitoring-gitops.git
+    path: argocd-apps
+    targetRevision: main
     helm:
+      repoURL: https://victoriametrics.github.io/helm-charts/
+      chart: vmagent
+      targetRevision: 0.9.28
       values: |
         extraArgs:
           - -promscrape.config=/config/prometheus.yaml
         config:
-          "prometheus.yaml": |
+          prometheus.yaml: |
             global:
               scrape_interval: 15s
             scrape_configs:
               - job_name: 'rails-app'
                 static_configs:
-                  - targets: ['rails.monitoring.svc.cluster.local:3000']
+                  - targets: ['rails-app.monitoring.svc.cluster.local:3000']
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -28,3 +31,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
