@@ -1,12 +1,36 @@
-vmagent:
-  remoteWrite:
-    - url: http://victoriametrics-victoria-metrics-single-server.monitoring.svc.cluster.local:8428/api/v1/write
+replicaCount: 1
 
-  scrapeInterval: 15s
+image:
+  repository: victoriametrics/vmagent
+  tag: v1.93.0
+  pullPolicy: IfNotPresent
 
+remoteWrite:
+  - url: "http://victoriametrics-victoria-metrics-single-server.monitoring.svc.cluster.local:8428/api/v1/write"
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+service:
+  type: ClusterIP
+  port: 8428
+
+prometheusScrapeConfig:
+  global:
+    scrape_interval: 15s
   scrape_configs:
     - job_name: 'rails-app'
       static_configs:
-        - targets:
-            - 'rails-app.<rails-namespace>.svc.cluster.local:3000'
+        - targets: ['rails-app.monitoring.svc.cluster.local:3000']
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
 
