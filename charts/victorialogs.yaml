@@ -7,8 +7,8 @@ spec:
   project: default
   source:
     repoURL: https://victoriametrics.github.io/helm-charts
-    chart: victorialogs
-    targetRevision: 0.4.2
+    chart: victoria-logs-single  # <-- правильное имя чарта
+    targetRevision: 0.11.3
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
