@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: victorialogs
-  namespace: argocd
+  namespace: monitoring
 spec:
   project: default
   source:
