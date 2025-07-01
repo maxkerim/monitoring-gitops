@@ -2,11 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: fluent-bit
-  namespace: argocd
+  namespace: monitoring
 spec:
   project: default
   source:
-    repoURL: https://github.com/fluent/helm-charts
+    repoURL: https://fluent.github.io/helm-charts
     chart: fluent-bit
     targetRevision: 0.22.0
     helm:
