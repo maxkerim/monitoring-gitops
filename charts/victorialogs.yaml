@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/VictoriaMetrics/helm-charts
+    repoURL: https://victoriametrics.github.io/helm-charts
     chart: victorialogs
     targetRevision: 0.4.2
   destination:
