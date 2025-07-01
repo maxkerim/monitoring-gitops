@@ -6,10 +6,9 @@ metadata:
 spec:
   project: default
   source:
-  repoURL: https://github.com/Oshtuk/monitoring-gitops
-  targetRevision: HEAD
-  path: charts/vmagent
-
+    repoURL: https://github.com/Oshtuk/monitoring-gitops
+    targetRevision: HEAD
+    path: charts/vmagent
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
