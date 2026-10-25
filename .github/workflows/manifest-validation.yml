@@ -1,0 +1,28 @@
+name: Validate Kubernetes manifests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: azure/setup-helm@v4
+        with:
+          version: v3.16.4
+      - uses: azure/setup-kubectl@v4
+        with:
+          version: v1.31.0
+      - name: Lint Helm charts
+        run: |
+          for chart in charts/grafana charts/vmagent charts/fluent-bit charts/victoriametrics charts/rails-app; do
+            helm lint "$chart"
+          done
+      - name: Build Rails Kustomize overlay
+        run: kubectl kustomize apps/rails-app >/dev/null
