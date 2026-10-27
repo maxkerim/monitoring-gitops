@@ -1,12 +1,12 @@
-# 🚀 Monitoring GitOps Stack for Rails App
+# Monitoring GitOps Stack for Rails App
 
-📌 **Автор:** [@Oshtuk](https://github.com/Oshtuk)  
-📦 **Цель:** Развёртывание приложения на Rails в Kubernetes с мониторингом и GitOps через ArgoCD  
-🌐 **Репозиторий:** [github.com/Oshtuk/monitoring-gitops](https://github.com/Oshtuk/monitoring-gitops)
+Репозиторий содержит конфигурацию для развёртывания Rails-приложения в Kubernetes и GitOps-управления им через Argo CD. В комплект входят Helm-чарты приложения и компонентов мониторинга, а также конфигурация сбора метрик и логов.
+
+Ранее репозиторий назывался [Oshtuk/monitoring-gitops](https://github.com/Oshtuk/monitoring-gitops). Текущий репозиторий: [maxkerim/monitoring-gitops](https://github.com/maxkerim/monitoring-gitops).
 
 ---
 
-## 🔧 Стек технологий
+## Стек технологий
 
 | Компонент        | Назначение                                   |
 |------------------|-----------------------------------------------|
@@ -20,7 +20,7 @@
 
 ---
 
-## 📂 Структура репозитория
+## Структура репозитория
 
 ```text
 .
