@@ -24,9 +24,11 @@ Grafana, Fluent Bit, VictoriaLogs и VictoriaMetrics используют upstre
 
 ```sh
 kubectl create namespace monitoring --dry-run=client -o yaml | kubectl apply -f -
+read -rsp 'Rails master key: ' RAILS_MASTER_KEY && echo
 kubectl -n monitoring create secret generic rails-app-master-key \
-	--from-file=master-key=apps/rails-app/config/master.key \
+	--from-literal=master-key="$RAILS_MASTER_KEY" \
 	--dry-run=client -o yaml | kubectl apply -f -
+unset RAILS_MASTER_KEY
 read -rsp 'Grafana admin password: ' GRAFANA_ADMIN_PASSWORD && echo
 kubectl -n monitoring create secret generic grafana-admin \
 	--from-literal=admin-user=admin \
