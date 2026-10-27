@@ -1,2 +1,10 @@
 .bundle/
 /vendor/bundle/
+
+/apps/rails-app/config/master.key
+/apps/rails-app/log/*
+!/apps/rails-app/log/.keep
+/apps/rails-app/storage/*
+!/apps/rails-app/storage/.keep
+/apps/rails-app/tmp/*
+!/apps/rails-app/tmp/.keep

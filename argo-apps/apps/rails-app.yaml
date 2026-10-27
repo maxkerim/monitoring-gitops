@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Oshtuk/monitoring-gitops
+    repoURL: https://github.com/maxkerim/monitoring-gitops
     targetRevision: HEAD
     path: charts/rails-app
   destination:

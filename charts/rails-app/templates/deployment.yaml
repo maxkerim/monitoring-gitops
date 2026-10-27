@@ -18,6 +18,14 @@ spec:
         - name: rails
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.railsMasterKey.existingSecret }}
+          env:
+            - name: RAILS_MASTER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.railsMasterKey.existingSecret }}
+                  key: {{ .Values.railsMasterKey.secretKey }}
+          {{- end }}
           ports:
             - containerPort: {{ .Values.service.port }}
           readinessProbe:
